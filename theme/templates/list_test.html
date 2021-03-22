@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Tasks List</h2>
+
+  <ul>
+    {% for task in tasks %}
+      <li>{{ task.name }} - {{ task.task }} - {{ task.enabled }}- {{ task.last_run_at }} - {{task.interval}}
+        <a class="btn btn-default" href="{% url 'edit_task' task_id=task.id %}">{% include './pencil-fill.svg' %}</a>
+
+      </li>
+    {% empty %}
+      <li>No tasks.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
